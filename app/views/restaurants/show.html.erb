@@ -2,7 +2,10 @@
 
 <h2><%= pluralize @restaurant.reviews.size, "review" %></h2>
 
-<div data-controller="insert-in-list">
+<div data-controller="insert-in-list" data-insert-in-list-position-value="beforeend">
+
+  <%= render "reviews/form", restaurant: @restaurant, review: @review %>
+
   <div data-insert-in-list-target="items">
     <% if @restaurant.reviews.blank? %>
       Be the first to leave a review for <%= @restaurant.name %>
@@ -12,8 +15,5 @@
       <% end %>
     <% end %>
   </div>
-
-  <%= render "reviews/form", restaurant: @restaurant, review: @review %>
-
 </div>
 <%= link_to "Back to all restaurants", restaurants_path %>
